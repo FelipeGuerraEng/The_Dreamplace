@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: timeout-redis-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: timeout-redis
+  template:
+    metadata:
+      labels:
+        app: timeout-redis
+    spec:
+      containers:
+        - name: timeout-redis
+          image: redis
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: timeout-redis-srv
+spec:
+  selector:
+    app: timeout-redis
+  ports:
+    - name: db
+      protocol: TCP
+      port: 6379
+      targetPort: 6379

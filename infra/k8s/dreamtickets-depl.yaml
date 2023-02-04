@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dreamtickets-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dreamtickets
+  template:
+    metadata:
+      labels:
+        app: dreamtickets
+    spec:
+      containers:
+        - name: dreamtickets
+          image: davidhume/dreamtickets
+          env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: thedreamplace
+            - name: MONGO_URI
+              value: 'mongodb://dreamtickets-mongo-srv:27017/dreamtickets'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dreamtickets-srv
+spec:
+  selector:
+    app: dreamtickets
+  ports:
+    - name: dreamtickets
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

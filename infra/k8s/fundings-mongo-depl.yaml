@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fundings-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fundings-mongo
+  template:
+    metadata:
+      labels:
+        app: fundings-mongo
+    spec:
+      containers:
+        - name: fundings-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fundings-mongo-srv
+spec:
+  selector:
+    app: fundings-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fundings-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fundings
+  template:
+    metadata:
+      labels:
+        app: fundings
+    spec:
+      containers:
+        - name: fundings
+          image: davidhume/fundings
+          env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: thedreamplace
+            - name: MONGO_URI
+              value: 'mongodb://fundings-mongo-srv:27017/fundings'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fundings-srv
+spec:
+  selector:
+    app: fundings
+  ports:
+    - name: fundings
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

@@ -1,0 +1,54 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+spec:
+  rules:
+    - host: thedreamplace.com
+      http:
+        paths:
+          - path: /api/payments/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: payments-srv
+                port:
+                  number: 3000
+          - path: /api/users/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: auth-srv
+                port:
+                  number: 3000
+          - path: /api/dreamtickets/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: dreamtickets-srv
+                port:
+                  number: 3000
+          - path: /api/fundings/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: fundings-srv
+                port:
+                  number: 3000
+          - path: /mail/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: mailing-srv
+                port:
+                  number: 8080
+          - path: /?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: client-srv
+                port:
+                  number: 3000
