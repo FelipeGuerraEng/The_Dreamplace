@@ -1,0 +1,7 @@
+/home/felipe/Documents/SEMESTRE_VII/WWW/Proyecto_EntregaFinal/thedreamplace/mailing/src/main/java/com/thedreamplace/mailing/MailingApplication.java
+/home/felipe/Documents/SEMESTRE_VII/WWW/Proyecto_EntregaFinal/thedreamplace/mailing/src/main/java/com/thedreamplace/mailing/controllers/MalingController.java
+/home/felipe/Documents/SEMESTRE_VII/WWW/Proyecto_EntregaFinal/thedreamplace/mailing/src/main/java/com/thedreamplace/mailing/entities/MailingEntity.java
+/home/felipe/Documents/SEMESTRE_VII/WWW/Proyecto_EntregaFinal/thedreamplace/mailing/src/main/java/com/thedreamplace/mailing/repositories/MailingRepository.java
+/home/felipe/Documents/SEMESTRE_VII/WWW/Proyecto_EntregaFinal/thedreamplace/mailing/src/main/java/com/thedreamplace/mailing/services/MailingService.java
+/home/felipe/Documents/SEMESTRE_VII/WWW/Proyecto_EntregaFinal/thedreamplace/mailing/src/main/java/com/thedreamplace/mailing/dtos/SendCredentialsDTO.java
+/home/felipe/Documents/SEMESTRE_VII/WWW/Proyecto_EntregaFinal/thedreamplace/mailing/src/main/java/com/thedreamplace/mailing/dtos/SendNewMailDTO.java

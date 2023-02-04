@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cambio de correo TheDreamPlace</title>
+
+    <style>
+      .container {
+      }
+
+      .img-fluid {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .img {
+        height: 10rem;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      table,
+      th,
+      td {
+        border-style: solid;
+        border-color: black;
+        border-width: 1px;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        padding: 10px;
+      }
+
+      body {
+        background-color: rgb(188, 206, 251);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+      .heading-color {
+        color: #b70a4f;
+      }
+      .p-info {
+        font-size: 1.2rem;
+      }
+
+      .info-container {
+        background-color: #6bbec6;
+        padding: 0.5rem;
+        border-radius: 2rem;
+      }
+
+      .cambia-container {
+        background-color: #ffdd09;
+        padding: 0.5rem;
+        border-radius: 2rem;
+      }
+
+      .font-size-table {
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container text-center">
+      <div class="container">
+        <h1 class="heading-color">¡Hello Welcome to the DreamPlace!</h1>
+      </div>
+      <div>
+        <p
+          class="p-info"
+          th:text="${fullname} + ' we are pleased to have you on the DreamPlace'"
+        ></p>
+      </div>
+      <div>
+        <p
+          class="p-info"
+          th:text="'If you did not sign in, please contact the administrator'"
+        ></p>
+      </div>
+    </div>
+  </body>
+</html>
